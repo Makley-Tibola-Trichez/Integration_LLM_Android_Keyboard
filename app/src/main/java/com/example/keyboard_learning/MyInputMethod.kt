@@ -1,6 +1,7 @@
 package com.example.keyboard_learning
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.inputmethodservice.InputMethodService
 import android.inputmethodservice.Keyboard
 import android.inputmethodservice.KeyboardView
@@ -8,6 +9,7 @@ import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
 import android.media.AudioManager
 import android.view.KeyEvent
 import android.view.View
+import android.widget.LinearLayout
 
 
 class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
@@ -18,6 +20,7 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
     override fun onRelease(primaryCode: Int) {}
 
     override fun onCreateInputView(): View {
+
         keyboardView = layoutInflater.inflate(R.layout.keyboard, null) as KeyboardView?
         keyboard = Keyboard(this, R.xml.qwerty)
         keyboardView!!.keyboard = keyboard
