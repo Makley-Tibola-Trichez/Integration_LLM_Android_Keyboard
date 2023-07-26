@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
-    android:horizontalGap="0px"
-    android:keyWidth="10%p"
+    android:keyWidth="8.7%p"
     android:keyHeight="50dp"
-    android:verticalGap="0px">
+    android:verticalGap="2dp"
+    android:horizontalGap="2dp"
+    >
 
-    <Row>
+
+    <Row
+        >
 
         <Key
             android:codes="49"
@@ -147,6 +150,7 @@
         <Key
             android:codes="-1"
             android:keyEdgeFlags="left"
+            android:keyWidth="11.67%p"
             android:keyLabel="CAPS" />
 
         <Key
@@ -182,8 +186,9 @@
         <Key
             android:codes="-5"
             android:isRepeatable="true"
-            android:keyWidth="20%p"
-            android:keyLabel="DEL" />
+            android:keyWidth="11.67%p"
+            android:keyIcon="@android:drawable/ic_input_delete"
+            />
 
 <!--        <Key-->
 <!--            android:codes="63,33,58"-->
@@ -209,7 +214,7 @@
         <Key
             android:codes="32"
             android:isRepeatable="true"
-            android:keyWidth="40%p"
+            android:keyWidth="43.70%p"
             android:keyLabel="SPACE" />
 
         <Key
