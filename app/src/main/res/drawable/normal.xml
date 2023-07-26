@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:left="2dp" android:right="2dp">
-
+    <item>
         <shape android:shape="rectangle">
-
-            <solid android:color="@color/keyboard_divider"/>
-
+            <solid android:color="@color/key_border_color" />
         </shape>
-
     </item>
 
-
-    <item android:bottom="2dp">
-
+    <item
+        android:bottom="2dp"
+        android:left="2dp"
+        android:right="2dp"
+        android:top="2dp"
+        >
         <shape android:shape="rectangle">
-
-            <solid android:color="@color/keyboard_background_color"/>
-
+            <solid android:color="@color/key_background_color" />
         </shape>
-
     </item>
-
-
 </layer-list>
