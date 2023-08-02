@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">keyboard-learning</string>
+    
+    <string name="at_sign">\@</string>
+    <string name="and_sign">&amp;</string>
+    <string name="double_quote">"</string>
 </resources>

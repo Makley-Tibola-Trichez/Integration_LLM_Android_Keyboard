@@ -1,3 +1,4 @@
+
 package com.example.keyboard_learning
 
 import android.annotation.SuppressLint
@@ -7,15 +8,18 @@ import android.inputmethodservice.Keyboard
 import android.inputmethodservice.KeyboardView
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
 import android.media.AudioManager
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.widget.LinearLayout
 
 
+
 class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
     private var keyboardView: KeyboardView? = null
     private var keyboard: Keyboard? = null
-    var isCaps = false
+    private var isCaps = false
+    private var isAlt = false
     override fun onPress(primaryCode: Int) {}
     override fun onRelease(primaryCode: Int) {}
 
@@ -31,7 +35,17 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
     override fun onKey(primaryCode: Int, keyCodes: IntArray) {
         val inputConnection = currentInputConnection
         playClick(primaryCode)
+
         when (primaryCode) {
+
+            Keyboard.KEYCODE_ALT -> {
+                isAlt = !isAlt;
+                val querty = if (isAlt) R.xml.qwerty_alt else R.xml.qwerty;
+
+                keyboard = Keyboard(this, querty)
+                keyboardView!!.keyboard = keyboard
+                keyboardView!!.invalidateAllKeys()
+            }
             Keyboard.KEYCODE_DELETE -> inputConnection.deleteSurroundingText(1, 0)
             Keyboard.KEYCODE_SHIFT -> {
                 isCaps = !isCaps
@@ -65,6 +79,7 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
             else -> audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_STANDARD)
         }
     }
+
 
     override fun onText(text: CharSequence) {}
     override fun swipeLeft() {}

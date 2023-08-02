@@ -2,8 +2,10 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:gravity="top|center"
-    android:background="@android:color/black"
-    android:textColor="@color/colorPrimary"
+    android:background="@drawable/key_preview"
+    android:textColor="@color/white"
+    android:radius="9dip"
     android:textSize="30sp">
 </TextView>

@@ -10,6 +10,9 @@
     android:keyPreviewOffset="25sp"
     android:gravity="center|fill_horizontal"
     android:keyTextColor="@android:color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+
+    android:paddingVertical="6dp"
+    >
 
 </android.inputmethodservice.KeyboardView>
