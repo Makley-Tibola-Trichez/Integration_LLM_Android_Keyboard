@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <solid android:color="@color/keyboard_pressed"/>
-
-</shape>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <corners android:radius="9dip" />
+            <solid android:color="@color/key_preview_background_color" />
+        </shape>
+    </item>
+</layer-list>

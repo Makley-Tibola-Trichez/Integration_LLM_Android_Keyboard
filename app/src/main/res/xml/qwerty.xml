@@ -1,43 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
-    android:keyHeight="50dp"
-    android:keyWidth="9.5%"
-    android:verticalGap="4dp"
-    android:horizontalGap="4dp">
-    <Row>
-        <Key
-            android:codes="49"
-            android:keyEdgeFlags="left"
-            android:keyLabel="1" />
-        <Key
-            android:codes="50"
-            android:keyLabel="2" />
-        <Key
-            android:codes="51"
-            android:keyLabel="3" />
-        <Key
-            android:codes="52"
-            android:keyLabel="4" />
-        <Key
-            android:codes="53"
-            android:keyLabel="5" />
-        <Key
-            android:codes="54"
-            android:keyLabel="6" />
-        <Key
-            android:codes="55"
-            android:keyLabel="7" />
-        <Key
-            android:codes="56"
-            android:keyLabel="8" />
-        <Key
-            android:codes="57"
-            android:keyLabel="9" />
-        <Key
-            android:codes="48"
-            android:keyLabel="0" />
-    </Row>
-
+    android:keyHeight="48dp"
+    android:keyWidth="8.5%p"
+    android:verticalGap="5dp"
+    android:horizontalGap="5dp">
     <Row>
         <Key
             android:codes="113"
@@ -73,7 +39,7 @@
 
     <Row>
         <Key
-            android:horizontalGap="5%"
+            android:horizontalGap="2.25%p"
             android:codes="97"
             android:keyEdgeFlags="left"
             android:keyLabel="a" />
@@ -107,13 +73,11 @@
     <Row>
         <Key
             android:codes="-1"
-            android:keyWidth="12.5%"
+            android:keyWidth="12.5%p"
             android:keyEdgeFlags="left"
             android:keyLabel="CAPS" />
         <Key
             android:codes="122"
-            android:horizontalGap="2.5%"
-
             android:keyLabel="z" />
         <Key
             android:codes="120"
@@ -136,32 +100,29 @@
         <Key
             android:codes="-5"
             android:keyEdgeFlags="right"
-            android:horizontalGap="2.5%"
-            android:keyWidth="12.5%"
-            android:radius="30dp"
+            android:keyWidth="12.5%p"
             android:isRepeatable="true"
             android:keyIcon="@android:drawable/ic_input_delete"
             />
     </Row>
 
-    <Row android:rowEdgeFlags="bottom">
+    <Row android:rowEdgeFlags="bottom" >
+        <Key
+            android:codes="-6"
+            android:keyEdgeFlags="left"
+            android:keyLabel="123"
+            android:popupCharacters="123"
+            />
         <Key
             android:codes="44"
-            android:keyEdgeFlags="left"
+            android:keyIcon="@drawable/sentiment_satisfied_24px"/>
+        <Key
+            android:codes="44"
             android:keyLabel="," />
-        <Key
-            android:codes="44"
-            android:keyEdgeFlags="left"
-            android:keyLabel="," />      <Key
-        android:codes="44"
-        android:keyEdgeFlags="left"
-        android:keyLabel="," />
-
         <Key
             android:codes="32"
             android:isRepeatable="true"
-            android:keyWidth="50%"
-            android:keyLabel="SPACE" />
+            android:keyWidth="50%p"/>
         <Key
             android:codes="46"
             android:keyLabel="." />
