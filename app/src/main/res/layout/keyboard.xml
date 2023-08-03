@@ -6,13 +6,10 @@
     android:layout_alignParentBottom="true"
     android:background="@color/keyboard_background_color"
     android:keyBackground="@drawable/key_background"
-    android:keyPreviewLayout="@layout/key_preview"
-    android:keyPreviewOffset="25sp"
+    android:keyPreviewLayout="@layout/key_preview_content"
+    android:keyPreviewOffset="45dp"
+    android:keyPreviewHeight="90dp"
     android:gravity="center|fill_horizontal"
     android:keyTextColor="@android:color/white"
     android:orientation="vertical"
-
-    android:paddingVertical="6dp"
-    >
-
-</android.inputmethodservice.KeyboardView>
+    android:paddingVertical="6dp" />

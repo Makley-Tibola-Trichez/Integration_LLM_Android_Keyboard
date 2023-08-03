@@ -2,10 +2,9 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:gravity="top|center"
-    android:background="@drawable/key_preview"
+    android:background="@drawable/key_pressed"
     android:textColor="@color/white"
-    android:radius="9dip"
-    android:textSize="30sp">
+    android:textSize="28sp"
+    >
 </TextView>
