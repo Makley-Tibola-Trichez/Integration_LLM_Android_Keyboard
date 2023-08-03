@@ -75,6 +75,7 @@
             android:codes="-1"
             android:keyWidth="12.5%p"
             android:keyEdgeFlags="left"
+            android:isSticky="true"
             android:keyLabel="CAPS" />
         <Key
             android:codes="122"
@@ -111,10 +112,12 @@
             android:codes="-6"
             android:keyEdgeFlags="left"
             android:keyLabel="123"
+            android:isSticky="true"
             android:popupCharacters="123"
             />
         <Key
             android:codes="44"
+            android:isSticky="true"
             android:keyIcon="@drawable/sentiment_satisfied_24px"/>
         <Key
             android:codes="44"

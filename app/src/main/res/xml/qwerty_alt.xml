@@ -77,6 +77,7 @@
         <Key
             android:codes="-2"
             android:keyLabel="{&amp;="
+            android:isSticky="true"
             android:keyEdgeFlags="left"/>
         <Key
             android:codes="34"
@@ -105,6 +106,7 @@
         <Key
             android:codes="-5"
             android:keyIcon="@android:drawable/ic_input_delete"
+            android:isRepeatable="true"
             android:keyEdgeFlags="right"/>
     </Row>
 
@@ -113,6 +115,7 @@
             android:codes="-6"
             android:keyLabel="abc"
             android:keyEdgeFlags="left"
+            android:isSticky="true"
             android:popupCharacters="abc"
             />
         <Key
