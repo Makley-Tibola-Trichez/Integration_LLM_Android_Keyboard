@@ -1,18 +1,13 @@
 
 package com.example.keyboard_learning
 
-import android.annotation.SuppressLint
-import android.app.Activity
+import devandroid.makley.keyboard_api.Keyboard;
+import devandroid.makley.keyboard_api.KeyboardView;
+import devandroid.makley.keyboard_api.KeyboardView.OnKeyboardActionListener
 import android.inputmethodservice.InputMethodService
-import android.inputmethodservice.Keyboard
-import android.inputmethodservice.KeyboardView
-import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
 import android.media.AudioManager
-import android.util.Log
 import android.view.KeyEvent
 import android.view.View
-import android.widget.LinearLayout
-
 
 
 class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
@@ -32,7 +27,10 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
         return keyboardView!!
     }
 
+
+
     override fun onKey(primaryCode: Int, keyCodes: IntArray) {
+
         val inputConnection = currentInputConnection
         playClick(primaryCode)
 
@@ -86,6 +84,7 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
     override fun swipeRight() {}
     override fun swipeDown() {}
     override fun swipeUp() {}
+
 }
 
 

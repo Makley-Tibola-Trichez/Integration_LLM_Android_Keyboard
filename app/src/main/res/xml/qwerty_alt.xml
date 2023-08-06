@@ -1,136 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
-    android:keyHeight="48dp"
-    android:keyWidth="8.5%p"
-    android:verticalGap="5dp"
-    android:horizontalGap="5dp">
+<Keyboard xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:keyHeight="48dp"
+    app:keyWidth="8.5%p"
+    app:verticalGap="5dp"
+    app:horizontalGap="5dp">
 
-    <Row>
+    <Row app:rowEdgeFlags="top">
         <Key
-            android:codes="49"
-            android:keyEdgeFlags="left"
-            android:keyLabel="1" />
+            app:codes="49"
+            app:keyEdgeFlags="left"
+            app:keyLabel="1" />
         <Key
-            android:codes="50"
-            android:keyLabel="2" />
+            app:codes="50"
+            app:keyLabel="2" />
         <Key
-            android:codes="51"
-            android:keyLabel="3" />
+            app:codes="51"
+            app:keyLabel="3" />
         <Key
-            android:codes="52"
-            android:keyLabel="4" />
+            app:codes="52"
+            app:keyLabel="4" />
         <Key
-            android:codes="53"
-            android:keyLabel="5" />
+            app:codes="53"
+            app:keyLabel="5" />
         <Key
-            android:codes="54"
-            android:keyLabel="6" />
+            app:codes="54"
+            app:keyLabel="6" />
         <Key
-            android:codes="55"
-            android:keyLabel="7" />
+            app:codes="55"
+            app:keyLabel="7" />
         <Key
-            android:codes="56"
-            android:keyLabel="8" />
+            app:codes="56"
+            app:keyLabel="8" />
         <Key
-            android:codes="57"
-            android:keyLabel="9" />
+            app:codes="57"
+            app:keyLabel="9" />
         <Key
-            android:codes="48"
-            android:keyLabel="0" />
+            app:codes="48"
+            app:keyLabel="0" />
     </Row>
 
     <Row>
         <Key
-            android:codes="64"
-            android:keyLabel="@string/at_sign" />
+            app:codes="64"
+            app:keyLabel="@string/at_sign" />
         <Key
-            android:codes="35"
-            android:keyLabel="#" />
+            app:codes="35"
+            app:keyLabel="#" />
         <Key
-            android:codes="36"
-            android:keyLabel="$" />
+            app:codes="36"
+            app:keyLabel="$" />
         <Key
-            android:codes="38"
-            android:keyLabel="@string/and_sign" />
+            app:codes="38"
+            app:keyLabel="@string/and_sign" />
         <Key
-            android:codes="95"
-            android:keyLabel="_" />
+            app:codes="95"
+            app:keyLabel="_" />
         <Key
-            android:codes="45"
-            android:keyLabel="-" />
+            app:codes="45"
+            app:keyLabel="-" />
         <Key
-            android:codes="40"
-            android:keyLabel="(" />
+            app:codes="40"
+            app:keyLabel="(" />
         <Key
-            android:codes="41"
-            android:keyLabel=")" />
+            app:codes="41"
+            app:keyLabel=")" />
         <Key
-            android:codes="61"
-            android:keyLabel="=" />
+            app:codes="61"
+            app:keyLabel="=" />
         <Key
-            android:codes="37"
-            android:keyLabel="%" />
+            app:codes="37"
+            app:keyLabel="%" />
     </Row>
 
     <Row>
         <!-- add code here -->
         <Key
-            android:codes="-2"
-            android:keyLabel="{&amp;="
-            android:isSticky="true"
-            android:keyEdgeFlags="left"/>
+            app:codes="-2"
+            app:keyLabel="{&amp;="
+            app:isSticky="true"
+            app:keyEdgeFlags="left"/>
         <Key
-            android:codes="34"
-            android:keyLabel="@string/double_quote" />
+            app:codes="34"
+            app:keyLabel="&quot;" />
         <Key
-            android:codes="42"
-            android:keyLabel="*" />
+            app:codes="42"
+            app:keyLabel="*" />
         <Key
-            android:codes="39"
-            android:keyLabel="'" />
+            app:codes="39"
+            app:keyLabel="'" />
         <Key
-            android:codes="58"
-            android:keyLabel=":" />
+            app:codes="58"
+            app:keyLabel=":" />
         <Key
-            android:codes="47"
-            android:keyLabel="/" />
+            app:codes="47"
+            app:keyLabel="/" />
         <Key
-            android:codes="33"
-            android:keyLabel="!" />
+            app:codes="33"
+            app:keyLabel="!" />
         <Key
-            android:codes="63"
-            android:keyLabel="\?" />
+            app:codes="63"
+            app:keyLabel="\?" />
         <Key
-            android:codes="43"
-            android:keyLabel="+" />
+            app:codes="43"
+            app:keyLabel="+" />
         <Key
-            android:codes="-5"
-            android:keyIcon="@android:drawable/ic_input_delete"
-            android:isRepeatable="true"
-            android:keyEdgeFlags="right"/>
+            app:codes="-5"
+            app:keyIcon="@android:drawable/ic_input_delete"
+            app:isRepeatable="true"
+            app:keyEdgeFlags="right"/>
     </Row>
 
-    <Row android:rowEdgeFlags="bottom" >
+    <Row app:rowEdgeFlags="bottom" >
         <Key
-            android:codes="-6"
-            android:keyLabel="abc"
-            android:keyEdgeFlags="left"
-            android:isSticky="true"
-            android:popupCharacters="abc"
+            app:codes="-6"
+            app:keyLabel="abc"
+            app:keyEdgeFlags="left"
+            app:isSticky="true"
+            app:popupCharacters="abc"
             />
         <Key
-            android:codes="44"
-            android:keyLabel="," />
+            app:codes="44"
+            app:keyLabel="," />
         <Key
-            android:codes="32"
-            android:isRepeatable="true"
-            android:keyWidth="50%p"/>
+            app:codes="32"
+            app:isRepeatable="true"
+            app:keyWidth="50%p"/>
         <Key
-            android:codes="46"
-            android:keyLabel="." />
+            app:codes="46"
+            app:keyLabel="." />
         <Key
-            android:codes="-4"
-            android:keyEdgeFlags="right"
-            android:keyLabel="ENTR" />
+            app:codes="-4"
+            app:keyEdgeFlags="right"
+            app:keyLabel="ENTR" />
     </Row>
 </Keyboard>
