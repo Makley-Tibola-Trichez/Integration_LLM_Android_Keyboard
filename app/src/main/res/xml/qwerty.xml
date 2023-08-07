@@ -124,7 +124,7 @@
             app:keyLabel="," />
         <Key
             app:codes="32"
-            app:isRepeatable="true"
+            app:keyLabel=""
             app:keyWidth="50%p"/>
         <Key
             app:codes="46"
