@@ -75,7 +75,6 @@
             app:codes="-1"
             app:keyWidth="12.5%p"
             app:keyEdgeFlags="left"
-            app:isSticky="true"
             app:keyLabel="CAPS" />
         <Key
             app:codes="122"
@@ -124,7 +123,7 @@
             app:keyLabel="," />
         <Key
             app:codes="32"
-            app:keyLabel=""
+            app:keyLabel="SPACE"
             app:keyWidth="50%p"/>
         <Key
             app:codes="46"
