@@ -75,7 +75,8 @@
             app:codes="-1"
             app:keyWidth="12.5%p"
             app:keyEdgeFlags="left"
-            app:keyLabel="CAPS" />
+            app:keyIcon="@drawable/fa_light_up"
+            />
         <Key
             app:codes="122"
             app:keyLabel="z" />
@@ -102,7 +103,7 @@
             app:keyEdgeFlags="right"
             app:keyWidth="12.5%p"
             app:isRepeatable="true"
-            app:keyIcon="@android:drawable/ic_input_delete"
+            app:keyIcon="@drawable/fa_light_delete_left"
             />
     </Row>
 
@@ -112,7 +113,7 @@
             app:keyEdgeFlags="left"
             app:keyLabel="123"
             app:isSticky="true"
-            app:popupCharacters="123"
+            app:popupCharacters=""
             />
         <Key
             app:codes="44"

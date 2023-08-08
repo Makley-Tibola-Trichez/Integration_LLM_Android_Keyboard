@@ -105,7 +105,7 @@
             app:keyLabel="+" />
         <Key
             app:codes="-5"
-            app:keyIcon="@android:drawable/ic_input_delete"
+            app:keyIcon="@drawable/fa_light_delete_left"
             app:isRepeatable="true"
             app:keyEdgeFlags="right"/>
     </Row>
@@ -113,7 +113,7 @@
     <Row app:rowEdgeFlags="bottom" >
         <Key
             app:codes="-6"
-            app:keyLabel="abc"
+            app:keyLabel="ABC"
             app:keyEdgeFlags="left"
             app:isSticky="true"
             app:keyWidth="11%p"
