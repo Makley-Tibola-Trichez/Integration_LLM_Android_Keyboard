@@ -116,20 +116,24 @@
             app:keyLabel="abc"
             app:keyEdgeFlags="left"
             app:isSticky="true"
+            app:keyWidth="11%p"
             app:popupCharacters="abc"
             />
         <Key
             app:codes="44"
+            app:keyWidth="11%p"
             app:keyLabel="," />
         <Key
             app:codes="32"
-            app:keyLabel=""
+            app:keyLabel="SPACE"
             app:keyWidth="50%p"/>
         <Key
             app:codes="46"
+            app:keyWidth="11%p"
             app:keyLabel="." />
         <Key
             app:codes="-4"
+            app:keyWidth="11%p"
             app:keyEdgeFlags="right"
             app:keyLabel="ENTR" />
     </Row>

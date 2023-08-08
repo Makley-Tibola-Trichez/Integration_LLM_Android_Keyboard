@@ -21,26 +21,14 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
     override fun onCreateInputView(): View {
         keyboardView = layoutInflater.inflate(R.layout.keyboard, null) as KeyboardView?
 
-        try {
-
-
         keyboard = Keyboard(this, R.xml.qwerty)
         keyboardView!!.keyboard = keyboard
         keyboardView!!.setOnKeyboardActionListener(this)
         return keyboardView!!
-        } catch (e: Exception) {
-            e.printStackTrace()
-            return keyboardView as View
-        }
     }
 
 
-
     override fun onKey(primaryCode: Int, keyCodes: IntArray) {
-
-        try {
-
-
 
         val inputConnection = currentInputConnection
         playClick(primaryCode)
@@ -76,9 +64,6 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
                 }
                 inputConnection.commitText(code.toString(), 1)
             }
-        }
-        } catch (e: Exception) {
-            e.printStackTrace()
         }
     }
 
