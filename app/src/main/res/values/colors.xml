@@ -19,7 +19,9 @@
 
     <color name="key_background_color">#232323</color>
     <color name="key_preview_background_color">#363636</color>
-        <color name="keyboard_background_color">#141414</color>
+    <color name="keyboard_background_color">#141414</color>
     <color name="key_border_color">#0E0E0E</color>
+
+    <color name="candidate_background">#141414</color>
 
 </resources>
