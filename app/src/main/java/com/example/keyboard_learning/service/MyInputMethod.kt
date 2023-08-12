@@ -1,5 +1,5 @@
 
-package com.example.keyboard_learning
+package com.example.keyboard_learning.service
 
 import devandroid.makley.keyboard_api.Keyboard;
 import devandroid.makley.keyboard_api.KeyboardView;
@@ -8,6 +8,7 @@ import android.inputmethodservice.InputMethodService
 import android.media.AudioManager
 import android.view.KeyEvent
 import android.view.View
+import com.example.keyboard_learning.R
 
 
 class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
