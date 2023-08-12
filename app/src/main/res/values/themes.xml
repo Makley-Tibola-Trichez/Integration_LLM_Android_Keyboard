@@ -15,14 +15,15 @@
     </style>
 
     <style name="KeyboardView" parent="android:Widget">
-            <item name="android:background">@color/keyboard_background_color</item>
-            <item name="keyBackground">@drawable/key_background</item>
-            <item name="keyTextSize">22sp</item>
-            <item name="keyTextColor">@color/white</item>
-            <item name="keyPreviewLayout">@layout/key_preview_content</item>
-            <item name="keyPreviewOffset">45dp</item>
-            <item name="keyPreviewHeight">90dp</item>
-            <item name="labelTextSize">14sp</item>
-            <item name="shadowRadius">2.75</item>
+        <item name="android:background">@color/keyboard_background_color</item>
+        <item name="keyBackground">@drawable/key_background</item>
+        <item name="keyTextSize">22sp</item>
+        <item name="keyTextColor">@color/white</item>
+        <item name="keyPreviewLayout">@layout/key_preview_content</item>
+        <item name="keyPreviewOffset">45dp</item>
+        <item name="keyPreviewHeight">90dp</item>
+        <item name="labelTextSize">14sp</item>
+        <item name="shadowRadius">2.75</item>
+        <item name="android:paddingRight">2dp</item>
     </style>
 </resources>
