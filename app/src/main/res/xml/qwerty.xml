@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     app:keyHeight="48dp"
     app:keyWidth="8.5%p"
     app:verticalGap="5dp"
     app:horizontalGap="5dp">
-    <Row app:rowEdgeFlags="top">
+    <Row app:rowEdgeFlags="top"        >
         <Key
             app:codes="113"
+            app:horizontalGap="2%p"
             app:keyLabel="q" />
         <Key
             app:codes="119"
@@ -34,12 +36,13 @@
             app:keyLabel="o" />
         <Key
             app:codes="112"
+            android:keyEdgeFlags="right"
             app:keyLabel="p" />
     </Row>
 
     <Row>
         <Key
-            app:horizontalGap="2.25%p"
+            app:horizontalGap="6.75%p"
             app:codes="97"
             app:keyEdgeFlags="left"
             app:keyLabel="a" />
@@ -74,11 +77,13 @@
         <Key
             app:codes="-1"
             app:keyWidth="12.5%p"
+            app:horizontalGap="2%p"
             app:keyEdgeFlags="left"
             app:keyIcon="@drawable/fa_light_up"
             />
         <Key
             app:codes="122"
+            app:horizontalGap="2%p"
             app:keyLabel="z" />
         <Key
             app:codes="120"
@@ -103,12 +108,14 @@
             app:keyEdgeFlags="right"
             app:keyWidth="12.5%p"
             app:isRepeatable="true"
+            app:horizontalGap="2%p"
             app:keyIcon="@drawable/fa_light_delete_left"
             />
     </Row>
 
     <Row app:rowEdgeFlags="bottom" >
         <Key
+            app:horizontalGap="2%p"
             app:codes="-6"
             app:keyEdgeFlags="left"
             app:keyLabel="123"
@@ -125,7 +132,7 @@
         <Key
             app:codes="32"
             app:keyLabel="SPACE"
-            app:keyWidth="50%p"/>
+            app:keyWidth="47%p"/>
         <Key
             app:codes="46"
             app:keyLabel="." />
