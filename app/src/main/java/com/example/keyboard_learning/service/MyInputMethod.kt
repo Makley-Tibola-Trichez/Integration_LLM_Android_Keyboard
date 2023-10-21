@@ -1,9 +1,6 @@
 
 package com.example.keyboard_learning.service
 
-import devandroid.makley.keyboard_api.Keyboard;
-import devandroid.makley.keyboard_api.KeyboardView;
-import devandroid.makley.keyboard_api.KeyboardView.OnKeyboardActionListener
 import android.inputmethodservice.InputMethodService
 import android.media.AudioManager
 import android.util.Log
@@ -11,7 +8,11 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.CompletionInfo
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.ExtractedTextRequest
 import com.example.keyboard_learning.R
+import devandroid.makley.keyboard_api.Keyboard
+import devandroid.makley.keyboard_api.KeyboardView
+import devandroid.makley.keyboard_api.KeyboardView.OnKeyboardActionListener
 
 
 class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
@@ -22,7 +23,6 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
     private var isCaps = false
     private var isAlt = false
 
-    private var predictionOn = false
     private var completionOn = false
     private var completions: Array<CompletionInfo>? = null
 
@@ -50,27 +50,26 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
 
     override fun onKey(primaryCode: Int, keyCodes: IntArray) {
 
-        val inputConnection = currentInputConnection
         playClick(primaryCode)
 
         when (primaryCode) {
 
             Keyboard.KEYCODE_ALT -> {
-                isAlt = !isAlt;
-                val querty = if (isAlt) R.xml.qwerty_alt else R.xml.qwerty;
+                isAlt = !isAlt
+                val querty = if (isAlt) R.xml.qwerty_alt else R.xml.qwerty
 
                 keyboard = Keyboard(this, querty)
                 keyboardView!!.keyboard = keyboard
                 keyboardView!!.invalidateAllKeys()
             }
-            Keyboard.KEYCODE_DELETE -> inputConnection.deleteSurroundingText(1, 0)
+            Keyboard.KEYCODE_DELETE -> currentInputConnection.deleteSurroundingText(1, 0)
             Keyboard.KEYCODE_SHIFT -> {
                 isCaps = !isCaps
                 keyboard!!.isShifted = isCaps
                 keyboardView!!.invalidateAllKeys()
             }
 
-            Keyboard.KEYCODE_DONE -> inputConnection.sendKeyEvent(
+            Keyboard.KEYCODE_DONE -> currentInputConnection.sendKeyEvent(
                 KeyEvent(
                     KeyEvent.ACTION_DOWN,
                     KeyEvent.KEYCODE_ENTER
@@ -79,10 +78,11 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
 
             else -> {
                 var code = primaryCode.toChar()
+
                 if (Character.isLetter(code) && isCaps) {
                     code = code.uppercaseChar()
                 }
-                inputConnection.commitText(code.toString(), 1)
+                currentInputConnection.commitText(code.toString(), 1)
             }
         }
     }
@@ -110,12 +110,13 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
         updateCandidates()
         return super.onKeyUp(keyCode, event)
     }
-    override fun onText(text: CharSequence) {}
+    override fun onText(text: CharSequence) {
+        // Does not execute when digits are pressed
+    }
     override fun swipeLeft() {}
     override fun swipeRight() {}
     override fun swipeDown() {}
     override fun swipeUp() {}
-
 
     override fun onDisplayCompletions(completions: Array<CompletionInfo>?) {
         if (completionOn) {
@@ -150,16 +151,31 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
 
     }
     fun pickSuggestion(suggestion: String) {
-        // Find the last space and replace from there with the suggestion
-        val spacePos = composing.lastIndexOf(" ")
-        if (spacePos > 0) {
-            composing.delete(spacePos + 1, composing.length)
-        } else {
-            composing.setLength(0)
+
+        val extractedText = currentInputConnection.getExtractedText(ExtractedTextRequest(), 0)
+
+        val currentText = extractedText.text
+        val cursorPosition = extractedText.selectionStart
+
+        // If cursor is at the beginning of the text, just add the suggestion
+        if (cursorPosition == 0) {
+            currentInputConnection.commitText("$suggestion ", 1)
+            return
         }
-        composing.append(suggestion)
-        Log.d("pickSuggestion", "pickSuggestion: $composing")
-        currentInputConnection.setComposingText(composing, 1)
+
+        val previousChar = currentText[cursorPosition - 1]
+
+        // If char before cursor is whitespace, just add the suggestion
+        if (previousChar.isWhitespace()) {
+            currentInputConnection.commitText("$suggestion ", 1)
+            return
+        }
+
+        val charsBeforeCursorUntilWhiteSpace = currentText.subSequence(0, cursorPosition).split(" ").last()
+
+        // Delete chars before cursor until whitespace, and add suggestion
+        currentInputConnection.deleteSurroundingText(charsBeforeCursorUntilWhiteSpace.length, 0)
+        currentInputConnection.commitText("$suggestion ", 1)
     }
 
     private fun setSuggestions(suggestions: List<String>) {
