@@ -10,6 +10,7 @@ import android.view.inputmethod.CompletionInfo
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.ExtractedTextRequest
 import com.example.keyboard_learning.R
+import com.example.keyboard_learning.ml.LLMNextWord
 import devandroid.makley.keyboard_api.Keyboard
 import devandroid.makley.keyboard_api.KeyboardView
 import devandroid.makley.keyboard_api.KeyboardView.OnKeyboardActionListener
@@ -26,11 +27,20 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
     private var completionOn = false
     private var completions: Array<CompletionInfo>? = null
 
+    private lateinit var llm: LLMNextWord
 
     override fun onPress(primaryCode: Int) {}
     override fun onRelease(primaryCode: Int) {}
 
+    override fun onDestroy() {
+        super.onDestroy()
+        llm.onCleared()
+    }
+
     override fun onCreateInputView(): View {
+
+        llm = LLMNextWord(application)
+
         keyboardView = layoutInflater.inflate(R.layout.keyboard, null) as KeyboardView?
 
         keyboard = Keyboard(this, R.xml.qwerty)
@@ -49,8 +59,6 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
     }
 
     override fun onKey(primaryCode: Int, keyCodes: IntArray) {
-
-        playClick(primaryCode)
 
         when (primaryCode) {
 
@@ -83,17 +91,15 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
                     code = code.uppercaseChar()
                 }
                 currentInputConnection.commitText(code.toString(), 1)
-            }
-        }
-    }
 
-    private fun playClick(i: Int) {
-        val audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
-        when (i) {
-            32 -> audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_SPACEBAR)
-            Keyboard.KEYCODE_DONE, 10 -> audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_RETURN)
-            Keyboard.KEYCODE_DELETE -> audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_DELETE)
-            else -> audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_STANDARD)
+                val extractedText = currentInputConnection.getExtractedText(ExtractedTextRequest(), 0);
+
+                Log.d("EXTRACTED", "onKey: ${extractedText.text}")
+                val extractedTokens = llm.promptToken(extractedText.text.toString())
+                Log.d("EXTRACTED", "onKey: $extractedTokens")
+
+
+            }
         }
     }
 
@@ -102,7 +108,6 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
      */
     override fun onStartInput(attribute: EditorInfo?, restarting: Boolean) {
         super.onStartInput(attribute, restarting)
-        Log.d("onStartInput", "onStartInput: $attribute")
         updateCandidates()
     }
 
@@ -140,6 +145,7 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
 
 
         Log.d("updateCandidates", "updateCandidates: ${composing.isNotEmpty()} $completionOn")
+
         if (!completionOn) {
 //            if (composing.isNotEmpty()) {
 //                val list = getPredictions(composing.toString()).toList()
