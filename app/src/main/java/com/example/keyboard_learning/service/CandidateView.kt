@@ -21,17 +21,20 @@ class CandidateView(context: Context) : LinearLayout(context) {
 
         firstPrediction = viewBind.findViewById(R.id.first_prediction)
         firstPrediction.setOnClickListener {
-            v -> service?.pickSuggestion((v as TextView).text.toString())
+            service?.pickSuggestion((it as TextView).text.toString())
+            service?.updateSuggestions()
         }
 
         secondPrediction = viewBind.findViewById(R.id.second_prediction)
         secondPrediction.setOnClickListener {
-            v -> service?.pickSuggestion((v as TextView).text.toString())
+            service?.pickSuggestion((it as TextView).text.toString())
+            service?.updateSuggestions()
         }
 
         thirdPrediction = viewBind.findViewById(R.id.third_prediction)
         thirdPrediction.setOnClickListener {
-            v -> service?.pickSuggestion((v as TextView).text.toString())
+            service?.pickSuggestion((it as TextView).text.toString())
+            service?.updateSuggestions()
         }
     }
 

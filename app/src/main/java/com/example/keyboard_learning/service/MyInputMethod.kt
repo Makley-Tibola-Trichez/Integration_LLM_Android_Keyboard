@@ -58,19 +58,24 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
                 keyboardView!!.keyboard = keyboard
                 keyboardView!!.invalidateAllKeys()
             }
-            Keyboard.KEYCODE_DELETE -> currentInputConnection.deleteSurroundingText(1, 0)
+            Keyboard.KEYCODE_DELETE -> {
+                currentInputConnection.deleteSurroundingText(1, 0)
+                updateSuggestions()
+            }
             Keyboard.KEYCODE_SHIFT -> {
                 isCaps = !isCaps
                 keyboard!!.isShifted = isCaps
                 keyboardView!!.invalidateAllKeys()
             }
 
-            Keyboard.KEYCODE_DONE -> currentInputConnection.sendKeyEvent(
-                KeyEvent(
-                    KeyEvent.ACTION_DOWN,
-                    KeyEvent.KEYCODE_ENTER
+            Keyboard.KEYCODE_DONE -> {
+                currentInputConnection.sendKeyEvent(
+                    KeyEvent(
+                        KeyEvent.ACTION_DOWN,
+                        KeyEvent.KEYCODE_ENTER
+                    )
                 )
-            )
+            }
 
             else -> {
                 var charCode = primaryCode.toChar()
@@ -80,15 +85,38 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
                 }
                 currentInputConnection.commitText(charCode.toString(), 1)
 
-                val extractedText = currentInputConnection.getExtractedText(ExtractedTextRequest(), 0);
-
-                val extractedTokens = llm.promptToken(extractedText.text.toString())
-
-                candidateView?.updatePredictions(extractedTokens)
+                updateSuggestions()
 
             }
         }
     }
+
+
+    fun updateSuggestions() {
+        val extractedText = currentInputConnection.getExtractedText(ExtractedTextRequest(), 0);
+
+
+
+        val cursorPosition = extractedText.selectionStart
+
+
+
+        if (cursorPosition != 0 && extractedText.text[cursorPosition - 1].isLetterOrDigit()) {
+
+            // get the last word
+            val lastWord = extractedText.text.subSequence(0, cursorPosition).split(" ").last()
+            // remove the last word from extractedText
+            extractedText.text = extractedText.text.subSequence(0, cursorPosition - lastWord.length)
+
+        }
+
+        if (extractedText.text.isNotEmpty()) {
+            val extractedTokens = llm.promptToken(extractedText.text.toString())
+
+            candidateView?.updatePredictions(extractedTokens)
+        }
+    }
+
 
     override fun onText(text: CharSequence?) {    }
     override fun onPress(primaryCode: Int) {    }
