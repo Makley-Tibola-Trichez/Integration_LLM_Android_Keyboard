@@ -124,10 +124,6 @@
             />
         <Key
             app:codes="44"
-            app:isSticky="true"
-            app:keyIcon="@drawable/sentiment_satisfied_24px"/>
-        <Key
-            app:codes="44"
             app:keyLabel="," />
         <Key
             app:codes="32"

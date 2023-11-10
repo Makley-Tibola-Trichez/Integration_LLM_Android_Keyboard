@@ -36,21 +36,21 @@ class CandidateView(context: Context) : LinearLayout(context) {
     }
 
 
-    fun setSuggestions(prediction: List<String>) {
+     fun updatePredictions(prediction: List<String> = listOf()) {
 
-        Log.d("CandidateView", "setSuggestions: $prediction")
-        updatePredictions(prediction)
+         val mutablePredictions = prediction.toMutableList()
+
+         if (mutablePredictions.size < 3) {
+
+             val elementsToAdd = 3 - mutablePredictions.size
+
+             for (i in 0 until elementsToAdd) {
+                 mutablePredictions.add("")
+             }
+         }
+
+        firstPrediction.text =  mutablePredictions[0]
+        secondPrediction.text =  mutablePredictions[1]
+        thirdPrediction.text =  mutablePredictions[2]
     }
-    private fun updatePredictions(prediction: List<String>) {
-        firstPrediction.text = ""
-        firstPrediction.text = if (prediction.isNotEmpty()) prediction[0] else ""
-
-        secondPrediction.text = ""
-        secondPrediction.text = if (prediction.isNotEmpty()) prediction[1] else ""
-
-        thirdPrediction.text = ""
-        thirdPrediction.text = if (prediction.isNotEmpty()) prediction[2] else ""
-    }
-
-
 }
