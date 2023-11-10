@@ -105,8 +105,9 @@
             app:keyLabel="+" />
         <Key
             app:codes="-5"
-            app:keyIcon="@drawable/fa_light_delete_left"
+            app:keyIcon="@drawable/delete"
             app:isRepeatable="true"
+            app:keyWidth="12.5%p"
             app:keyEdgeFlags="right"/>
     </Row>
 
@@ -121,20 +122,19 @@
             />
         <Key
             app:codes="44"
-            app:keyWidth="11%p"
+            app:keyWidth="10.5%p"
             app:keyLabel="," />
         <Key
             app:codes="32"
-            app:keyLabel="SPACE"
             app:keyWidth="50%p"/>
         <Key
             app:codes="46"
-            app:keyWidth="11%p"
+            app:keyWidth="10.5%p"
             app:keyLabel="." />
         <Key
             app:codes="-4"
-            app:keyWidth="11%p"
+            app:keyWidth="12%p"
             app:keyEdgeFlags="right"
-            app:keyLabel="ENTR" />
+            app:keyIcon="@drawable/corner_down_left" />
     </Row>
 </Keyboard>

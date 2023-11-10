@@ -79,7 +79,7 @@
             app:keyWidth="12.5%p"
             app:horizontalGap="2%p"
             app:keyEdgeFlags="left"
-            app:keyIcon="@drawable/fa_light_up"
+            app:keyIcon="@drawable/arrow_big_up"
             />
         <Key
             app:codes="122"
@@ -109,7 +109,7 @@
             app:keyWidth="12.5%p"
             app:isRepeatable="true"
             app:horizontalGap="2%p"
-            app:keyIcon="@drawable/fa_light_delete_left"
+            app:keyIcon="@drawable/delete"
             />
     </Row>
 
@@ -127,14 +127,15 @@
             app:keyLabel="," />
         <Key
             app:codes="32"
-            app:keyLabel="SPACE"
-            app:keyWidth="47%p"/>
+            app:keyWidth="54%p"/>
         <Key
             app:codes="46"
             app:keyLabel="." />
         <Key
             app:codes="-4"
+            app:keyWidth="12.5%p"
             app:keyEdgeFlags="right"
-            app:keyLabel="ENTR" />
+            app:horizontalGap="2%p"
+            app:keyIcon="@drawable/corner_down_left" />
     </Row>
 </Keyboard>
