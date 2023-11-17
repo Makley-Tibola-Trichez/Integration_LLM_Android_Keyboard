@@ -21,11 +21,6 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
 
     private lateinit var llm: LLMNextWord
 
-    override fun onDestroy() {
-        super.onDestroy()
-        llm.onCleared()
-    }
-
     override fun onCreateInputView(): View {
         llm = LLMNextWord(application)
 
@@ -45,6 +40,10 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
         return candidateView
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        llm.onCleared()
+    }
 
     override fun onKey(primaryCode: Int, keyCodes: IntArray) {
         when (primaryCode) {
