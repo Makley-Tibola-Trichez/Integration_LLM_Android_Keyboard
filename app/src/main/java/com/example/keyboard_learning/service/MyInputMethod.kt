@@ -24,7 +24,10 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
     override fun onCreateInputView(): View {
         llm = LLMNextWord(application)
 
-        keyboardView = layoutInflater.inflate(R.layout.keyboard, null) as KeyboardView?
+        keyboardView = layoutInflater.inflate(
+            R.layout.keyboard,
+            null
+        ) as KeyboardView?
 
         keyboard = Keyboard(this, R.xml.qwerty)
         keyboardView!!.keyboard = keyboard
