@@ -127,6 +127,7 @@
             app:keyLabel="," />
         <Key
             app:codes="32"
+            app:keyLabel=""
             app:keyWidth="54%p"/>
         <Key
             app:codes="46"
