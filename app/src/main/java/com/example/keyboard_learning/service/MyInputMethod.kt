@@ -27,7 +27,6 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
     }
 
     override fun onCreateInputView(): View {
-
         llm = LLMNextWord(application)
 
         keyboardView = layoutInflater.inflate(R.layout.keyboard, null) as KeyboardView?
@@ -48,7 +47,6 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
 
 
     override fun onKey(primaryCode: Int, keyCodes: IntArray) {
-
         when (primaryCode) {
             Keyboard.KEYCODE_ALT -> {
                 isAlt = !isAlt
@@ -67,7 +65,6 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
                 keyboard!!.isShifted = isCaps
                 keyboardView!!.invalidateAllKeys()
             }
-
             Keyboard.KEYCODE_DONE -> {
                 currentInputConnection.sendKeyEvent(
                     KeyEvent(
@@ -76,7 +73,6 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
                     )
                 )
             }
-
             else -> {
                 var charCode = primaryCode.toChar()
 
@@ -86,7 +82,6 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
                 currentInputConnection.commitText(charCode.toString(), 1)
 
                 updateSuggestions()
-
             }
         }
     }
@@ -95,19 +90,13 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
     fun updateSuggestions() {
         val extractedText = currentInputConnection.getExtractedText(ExtractedTextRequest(), 0);
 
-
-
         val cursorPosition = extractedText.selectionStart
 
-
-
         if (cursorPosition != 0 && extractedText.text[cursorPosition - 1].isLetterOrDigit()) {
-
             // get the last word
             val lastWord = extractedText.text.subSequence(0, cursorPosition).split(" ").last()
             // remove the last word from extractedText
             extractedText.text = extractedText.text.subSequence(0, cursorPosition - lastWord.length)
-
         }
 
         if (extractedText.text.isNotEmpty()) {
@@ -139,7 +128,6 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
     }
 
     fun pickSuggestion(suggestion: String) {
-
         val extractedText = currentInputConnection.getExtractedText(ExtractedTextRequest(), 0)
 
         val currentText = extractedText.text
@@ -161,7 +149,7 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
 
         val charsBeforeCursorUntilWhiteSpace = currentText.subSequence(0, cursorPosition).split(" ").last()
 
-        // Delete chars before cursor until whitespace, and add suggestion
+        // Delete characters before the cursor up to the next space, then input the suggested text.
         currentInputConnection.deleteSurroundingText(charsBeforeCursorUntilWhiteSpace.length, 0)
         currentInputConnection.commitText("$suggestion ", 1)
     }
