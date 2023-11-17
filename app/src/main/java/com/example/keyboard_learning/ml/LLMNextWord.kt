@@ -95,8 +95,6 @@ class LLMNextWord(application: Application) : AndroidViewModel(application) {
             val nextToken: List<Int> = getNextTokens(outputLogits, quantityOfTokens)
             val decodedTokens = tokenizer.decode(nextToken)
 
-            Log.d("decodedTokens", decodedTokens)
-
             return decodedTokens.split(" ")
         }
 
