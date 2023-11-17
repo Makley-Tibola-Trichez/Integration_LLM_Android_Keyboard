@@ -32,6 +32,13 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
         return keyboardView!!
     }
 
+
+    override fun onDestroy() {
+        super.onDestroy()
+        llm.onCleared()
+    }
+
+
     override fun onCreateCandidatesView(): View? {
         candidateView = CandidateView(this).also {
             it.service = this
@@ -40,10 +47,6 @@ class MyInputMethod : InputMethodService(), OnKeyboardActionListener {
         return candidateView
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        llm.onCleared()
-    }
 
     override fun onKey(primaryCode: Int, keyCodes: IntArray) {
         when (primaryCode) {
